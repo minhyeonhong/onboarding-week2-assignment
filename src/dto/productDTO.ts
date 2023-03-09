@@ -9,7 +9,7 @@ export interface ITravelProduct {
 	registrationDate: string;
 }
 
-export type TCartInfo = ITravelProduct & { count: number }
+export type TCartInfo = ITravelProduct & { count: number };
 
 export interface IPrice {
 	key: number;

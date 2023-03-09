@@ -3,6 +3,7 @@ import { useQuery } from 'react-query';
 import travelProductsApis from '../apis/travelProducts';
 import { ITravelProduct, IPrice, ISpace, IFilter, TCartInfo } from '../dto/productDTO';
 import TravelCard from '../components/TravelCard';
+import Layout from '../components/layouts/Layout';
 
 function Main() {
 	const getTravelProducts = async () => {
@@ -54,16 +55,14 @@ function Main() {
 		if (!localStorage.getItem('cartInfo')) {
 			const products: ITravelProduct[] = response.data;
 			if (products !== undefined) {
-				const initCart: TCartInfo[] = products.map((item: ITravelProduct | TCartInfo) =>
-					({ ...item, count: 0 })
-				)
+				const initCart: TCartInfo[] = products.map((item: ITravelProduct | TCartInfo) => ({ ...item, count: 0 }));
 				localStorage.setItem('cartInfo', JSON.stringify(initCart));
 			}
 		}
-	}, [response.data])
+	}, [response.data]);
 
 	return (
-		<div>
+		<Layout>
 			<div>
 				가격 :
 				<select name="price" onChange={(event) => filterHandle(event.target.name, Number(event.target.value))}>
@@ -105,7 +104,7 @@ function Main() {
 						.filter((item: ITravelProduct) => item.spaceCategory === filter.space)
 						.map((product: ITravelProduct) => <TravelCard key={product.idx} product={product} />)}
 			</div>
-		</div>
+		</Layout>
 	);
 }
 
