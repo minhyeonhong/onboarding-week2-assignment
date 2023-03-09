@@ -1,6 +1,25 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
+import { RouterProvider } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ChakraProvider } from '@chakra-ui/react';
+import router from './shared/Router';
+
+const queryClient = new QueryClient({
+    defaultOptions: {
+        queries: {
+            staleTime: Infinity,
+            cacheTime: Infinity,
+            retry: false,
+        },
+    },
+});
+
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
-root.render(<App />);
+root.render(
+    <QueryClientProvider client={queryClient}>
+        <ChakraProvider>
+            <RouterProvider router={router} />
+        </ChakraProvider>
+    </QueryClientProvider>
+);
