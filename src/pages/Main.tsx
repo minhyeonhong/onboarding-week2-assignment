@@ -64,7 +64,7 @@ function Main() {
 
 	return (
 		<Layout>
-			<Box w='30%'>
+			<Box w="30%">
 				가격 :
 				<Select name="price" onChange={(event) => filterHandle(event.target.name, Number(event.target.value))}>
 					<option value="-1">전체</option>
