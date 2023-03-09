@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Select, Box } from '@chakra-ui/react';
 import { useQuery } from 'react-query';
 import travelProductsApis from '../apis/travelProducts';
 import { ITravelProduct, IPrice, ISpace, IFilter, TCartInfo } from '../dto/productDTO';
@@ -63,26 +64,26 @@ function Main() {
 
 	return (
 		<Layout>
-			<div>
+			<Box w='30%'>
 				가격 :
-				<select name="price" onChange={(event) => filterHandle(event.target.name, Number(event.target.value))}>
+				<Select name="price" onChange={(event) => filterHandle(event.target.name, Number(event.target.value))}>
 					<option value="-1">전체</option>
 					{priceArr.map((price) => (
 						<option value={price.endPrice} key={price.key}>
 							{price.startPrice}~{price.endPrice}
 						</option>
 					))}
-				</select>
+				</Select>
 				지역 :
-				<select name="space" onChange={(event) => filterHandle(event.target.name, event.target.value)}>
+				<Select name="space" onChange={(event) => filterHandle(event.target.name, event.target.value)}>
 					<option value="">전체</option>
 					{spaceArr.map((space) => (
 						<option value={space.space} key={space.key}>
 							{space.space}
 						</option>
 					))}
-				</select>
-			</div>
+				</Select>
+			</Box>
 			<div>
 				{filter.price === -1 &&
 					filter.space === '' &&
