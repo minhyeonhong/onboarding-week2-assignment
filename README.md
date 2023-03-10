@@ -1,7 +1,7 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-![Uploading 화면_기록_2023-03-10_오후_9_31_26_AdobeExpress.gif…]()
+
 ## Available Scripts
  asdasd
 In the project directory, you can run:
