@@ -1,4 +1,16 @@
-import { useDisclosure, Button, ButtonGroup, Card, Stack, Text, Heading, CardBody, CardFooter, Image, Divider } from '@chakra-ui/react';
+import {
+	useDisclosure,
+	Button,
+	ButtonGroup,
+	Card,
+	Stack,
+	Text,
+	Heading,
+	CardBody,
+	CardFooter,
+	Image,
+	Divider,
+} from '@chakra-ui/react';
 import { ITravelProduct, TCartInfo } from '../dto/productDTO';
 import TravelModal from './TravelModal';
 
@@ -26,27 +38,22 @@ function TravelCard({ product }: ProductProps) {
 
 	return (
 		<>
-			<Card maxW='sm'>
+			<Card maxW="sm">
 				<CardBody>
-					<Image
-						src={mainImage} alt={`product_main_image_${idx}`}
-						borderRadius='lg'
-					/>
-					<Stack mt='6' spacing='3'>
+					<Image src={mainImage} alt={`product_main_image_${idx}`} borderRadius="lg" />
+					<Stack mt="6" spacing="3">
 						<Text>번호{idx}</Text>
 
-						<Heading size='md'>{name}</Heading>
-						<Text>
-							{spaceCategory}
-						</Text>
-						<Text color='blue.600' fontSize='2xl'>
+						<Heading size="md">{name}</Heading>
+						<Text>{spaceCategory}</Text>
+						<Text color="blue.600" fontSize="2xl">
 							{price}원
 						</Text>
 					</Stack>
 				</CardBody>
 				<Divider />
 				<CardFooter>
-					<ButtonGroup spacing='2'>
+					<ButtonGroup spacing="2">
 						<Button colorScheme="yellow" type="button" onClick={setReservation}>
 							예약하기
 						</Button>

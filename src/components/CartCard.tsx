@@ -13,7 +13,7 @@ import {
 	Card,
 	Stack,
 	CardBody,
-	CardFooter
+	CardFooter,
 } from '@chakra-ui/react';
 import { TCartInfo } from '../dto/productDTO';
 
@@ -82,25 +82,15 @@ function CartCard({ cartInfo, deleteItem, putItemCount }: CartProps): React.Reac
 		// 	</ButtonGroup>
 		// </div>
 
-		<Card
-			direction={{ base: 'column', sm: 'row' }}
-			overflow='hidden'
-			variant='outline'
-		>
-			<Image
-				objectFit='cover'
-				maxW={{ base: '100%', sm: '200px' }}
-				src={mainImage} alt={`product_main_image_${idx}`}
-			/>
+		<Card direction={{ base: 'column', sm: 'row' }} overflow="hidden" variant="outline">
+			<Image objectFit="cover" maxW={{ base: '100%', sm: '200px' }} src={mainImage} alt={`product_main_image_${idx}`} />
 
 			<Stack>
 				<CardBody>
 					<Text>번호 : {idx}</Text>
-					<Heading size='md'>{name}</Heading>
+					<Heading size="md">{name}</Heading>
 					<Text>갯수 : {count}</Text>
-					<Text py='2'>
-						가격 : {price * count}
-					</Text>
+					<Text py="2">가격 : {price * count}</Text>
 				</CardBody>
 
 				<CardFooter>

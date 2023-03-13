@@ -84,7 +84,7 @@ function Main() {
 					))}
 				</Select>
 			</Box>
-			<Grid templateColumns='repeat(4, 1fr)' gap={6}>
+			<Grid templateColumns="repeat(4, 1fr)" gap={6}>
 				{filter.price === -1 &&
 					filter.space === '' &&
 					response.data?.map((product: ITravelProduct) => <TravelCard key={product.idx} product={product} />)}
