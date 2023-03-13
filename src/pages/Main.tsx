@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Select, Box } from '@chakra-ui/react';
+import { Select, Box, Grid } from '@chakra-ui/react';
 import { useQuery } from 'react-query';
 import travelProductsApis from '../apis/travelProducts';
 import { ITravelProduct, IPrice, ISpace, IFilter, TCartInfo } from '../dto/productDTO';
@@ -84,7 +84,7 @@ function Main() {
 					))}
 				</Select>
 			</Box>
-			<div>
+			<Grid templateColumns='repeat(4, 1fr)' gap={6}>
 				{filter.price === -1 &&
 					filter.space === '' &&
 					response.data?.map((product: ITravelProduct) => <TravelCard key={product.idx} product={product} />)}
@@ -104,7 +104,7 @@ function Main() {
 						?.filter((item: ITravelProduct) => item.price >= filter.price - 5000 && item.price <= filter.price)
 						.filter((item: ITravelProduct) => item.spaceCategory === filter.space)
 						.map((product: ITravelProduct) => <TravelCard key={product.idx} product={product} />)}
-			</div>
+			</Grid>
 		</Layout>
 	);
 }

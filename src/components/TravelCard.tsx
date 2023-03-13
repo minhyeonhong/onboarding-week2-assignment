@@ -1,4 +1,4 @@
-import { useDisclosure, Button, ButtonGroup } from '@chakra-ui/react';
+import { useDisclosure, Button, ButtonGroup, Card, Stack, Text, Heading, CardBody, CardFooter, Image, Divider } from '@chakra-ui/react';
 import { ITravelProduct, TCartInfo } from '../dto/productDTO';
 import TravelModal from './TravelModal';
 
@@ -19,32 +19,45 @@ function TravelCard({ product }: ProductProps) {
 			const addCartCount: TCartInfo[] = cartInfo.map((item: TCartInfo) =>
 				item.idx === idx ? { ...item, count: item.count + 1 } : item
 			);
-			localStorage.removeItem('cartInfo');
+			// localStorage.removeItem('cartInfo');
 			localStorage.setItem('cartInfo', JSON.stringify(addCartCount));
 		}
 	};
 
 	return (
-		<div>
-			<div>
-				<TravelModal isOpen={isOpen} onClose={onClose} idx={idx} />
-			</div>
-			<div>idx : {idx}</div>
-			<div>name : {name}</div>
-			<div>
-				<img src={mainImage} alt={`product_main_image_${idx}`} />
-			</div>
-			<div>price : {price}</div>
-			<div>spaceCategory : {spaceCategory}</div>
-			<ButtonGroup gap="4">
-				<Button colorScheme="yellow" type="button" onClick={setReservation}>
-					예약하기
-				</Button>
-				<Button colorScheme="purple" type="button" onClick={onOpen}>
-					상세정보
-				</Button>
-			</ButtonGroup>
-		</div>
+		<>
+			<Card maxW='sm'>
+				<CardBody>
+					<Image
+						src={mainImage} alt={`product_main_image_${idx}`}
+						borderRadius='lg'
+					/>
+					<Stack mt='6' spacing='3'>
+						<Text>번호{idx}</Text>
+
+						<Heading size='md'>{name}</Heading>
+						<Text>
+							{spaceCategory}
+						</Text>
+						<Text color='blue.600' fontSize='2xl'>
+							{price}원
+						</Text>
+					</Stack>
+				</CardBody>
+				<Divider />
+				<CardFooter>
+					<ButtonGroup spacing='2'>
+						<Button colorScheme="yellow" type="button" onClick={setReservation}>
+							예약하기
+						</Button>
+						<Button colorScheme="purple" type="button" onClick={onOpen}>
+							상세정보
+						</Button>
+					</ButtonGroup>
+				</CardFooter>
+			</Card>
+			<TravelModal isOpen={isOpen} onClose={onClose} idx={idx} />
+		</>
 	);
 }
 
